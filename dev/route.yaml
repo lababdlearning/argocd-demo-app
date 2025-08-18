@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: route-ideological-bobolink
+  namespace: argocd
+spec:
+  host: argodemo.apps.lab.ocp.lan
+  path: /
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: myapp-service
+    weight: 100
+
