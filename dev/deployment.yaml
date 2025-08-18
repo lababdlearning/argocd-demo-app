@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: docker.io/nanajanashia/argocd-app:1.2
+        image: quay.io/rhdevelopers/bgd:1.0.0
         ports:
         - containerPort: 8080
