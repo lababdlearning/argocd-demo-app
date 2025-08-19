@@ -117,7 +117,7 @@ metadata:
   namespace: openshift-nmstate
 spec:
   nodeSelector:
-    kubernetes.io/hostname: ocp-cp-2.lab.ocp.lan
+    kubernetes.io/hostname: ocp-cp-3.lab.ocp.lan
   maxUnavailable: 3
   desiredState:
     interfaces:
