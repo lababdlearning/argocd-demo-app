@@ -8,6 +8,7 @@ spec:
   addresses:
   - 192.168.60.0/24
   autoAssign: true
+  avoidBuggyIPs: true
 
 ---
 # 2. BGPPeer
@@ -40,3 +41,11 @@ spec:
   # Optional: Add communities if needed
   # communities:
   # - "65001:100"
+---
+#4. instance create
+#apiVersion: metallb.io/v1beta1
+#kind: MetalLB
+#metadata:
+#  name: metallb
+#  namespace: metallb-system
+#spec: {}

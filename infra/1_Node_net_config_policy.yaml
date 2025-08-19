@@ -25,3 +25,31 @@ spec:
         next-hop-address: 192.168.100.50
         next-hop-interface: ens224
         table-id: 254
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: route-policy-w1
+  namespace: openshift-nmstate
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: ocp-w-1.lab.ocp.lan
+  maxUnavailable: 3
+  desiredState:
+    interfaces:
+    - name: ens224
+      description: Static routing on ens224
+      type: ethernet
+      state: up
+      ipv4:
+        address:
+        - ip: 192.168.100.211
+          prefix-length: 24
+        enabled: true
+    routes:
+      config:
+      - destination: 10.50.52.0/24
+        metric: 150
+        next-hop-address: 192.168.100.50
+        next-hop-interface: ens224
+        table-id: 254
