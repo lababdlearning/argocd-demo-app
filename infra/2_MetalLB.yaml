@@ -1,0 +1,42 @@
+# 1. IPAddressPool
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: main-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.60.0/24
+  autoAssign: true
+
+---
+# 2. BGPPeer
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: bgp-peer-1
+  namespace: metallb-system
+spec:
+  myASN: 65001
+  peerASN: 65000
+  peerAddress: 192.168.100.50
+  # Optional: Add hold time and keepalive
+  holdTime: "90s"
+  keepaliveTime: "30s"
+
+---
+# 3. BGPAdvertisement
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: main-advertisement
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - main-pool  # Must match IPAddressPool name above
+  peers:
+  - bgp-peer-1  # Must match BGPPeer name above
+  aggregationLength: 32  # This ensures /32 routes for individual services
+  # Optional: Add communities if needed
+  # communities:
+  # - "65001:100"
