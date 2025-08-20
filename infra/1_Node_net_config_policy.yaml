@@ -19,7 +19,7 @@ spec:
           prefix-length: 24
         enabled: true
     routes:
-      config: []
+      config:
       - destination: 10.50.52.0/24
         metric: 150
         next-hop-address: 192.168.22.50
