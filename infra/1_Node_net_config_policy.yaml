@@ -20,11 +20,11 @@ spec:
         enabled: true
     routes:
       config: []
-      # - destination: 10.50.52.0/24
-      #   metric: 150
-      #   next-hop-address: 192.168.22.50
-      #   next-hop-interface: br-ex
-      #   table-id: 254
+      - destination: 10.50.52.0/24
+        metric: 150
+        next-hop-address: 192.168.22.50
+        next-hop-interface: br-ex
+        table-id: 254
 ---
 apiVersion: nmstate.io/v1
 kind: NodeNetworkConfigurationPolicy
@@ -40,7 +40,7 @@ spec:
     - name: ens224
       description: Static routing on ens224
       type: ethernet
-      state: up
+      state: absent
       ipv4:
         address:
         - ip: 192.168.100.211
@@ -68,7 +68,7 @@ spec:
     - name: ens224
       description: Static routing on ens224
       type: ethernet
-      state: up
+      state: absent
       ipv4:
         address:
         - ip: 192.168.100.201
@@ -96,7 +96,7 @@ spec:
     - name: ens224
       description: Static routing on ens224 updated
       type: ethernet
-      state: up
+      state: absent
       ipv4:
         address:
         - ip: 192.168.100.202
@@ -124,7 +124,7 @@ spec:
     - name: ens224
       description: Static routing on ens224
       type: ethernet
-      state: up
+      state: absent
       ipv4:
         address:
         - ip: 192.168.100.203
