@@ -10,7 +10,7 @@ spec:
   desiredState:
     interfaces:
     - name: ens224
-      description: Static routing on ens224
+      description: Static routing on ens224.
       type: ethernet
       state: absent
       ipv4:
