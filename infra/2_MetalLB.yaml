@@ -20,7 +20,7 @@ metadata:
 spec:
   myASN: 65001
   peerASN: 65000
-  peerAddress: 192.168.100.50
+  peerAddress: 192.168.22.50
   # Optional: Add hold time and keepalive
   holdTime: "90s"
   keepaliveTime: "30s"
