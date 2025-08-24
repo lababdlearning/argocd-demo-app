@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-kustomize
+  namespace: kustomize-lab
+spec:
+  selector:
+    matchLabels:
+      app: webapp-kustomize
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: webapp-kustomize
+    spec:
+      containers:
+      - name: webapp-kustomize
+        image: https://quay.io/repository/labandlearning/httpd:v1.0
+        ports:
+        - containerPort: 8080

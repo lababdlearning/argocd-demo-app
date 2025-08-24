@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kustomiz-dev-env
+resources:
+  - ../../base
+
+namePrefix: dev-
+
+labels:
+  - pairs:
+      env: dev
+
+patches:
+  - target:
+      kind: Deployment
+      name: webapp-kustomize
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: quay.io/labandlearning/httpd:v1.2
+  - target:
+      kind: Route
+      name: webapp-kustomize-route
+    patch: |-
+      - op: replace
+        path: /spec/host
+        value: webappdev-kustomize.apps.lab.ocp.lan
+      - op: replace
+        path: /spec/to/name
+        value: dev-webapp-kustomize-service

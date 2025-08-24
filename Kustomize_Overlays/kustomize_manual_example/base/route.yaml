@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: webapp-kustomize-route
+  namespace: kustomize-lab
+spec:
+  host: webapp-kustomize.apps.lab.ocp.lan
+  path: /
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: webapp-kustomize-service
+    weight: 100

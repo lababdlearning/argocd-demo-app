@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-kustomize
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: webapp-kustomize
+          image: quay.io/labandlearning/httpd:v1.0
