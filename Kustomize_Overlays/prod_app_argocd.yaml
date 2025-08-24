@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kustomize-dev-app
+  name: kustomize-prod-app
   namespace: openshift-gitops
 spec:
-  project: kustomize-proj
+  project: default
 
   source:
     repoURL: https://github.com/lababdlearning/argocd-demo-app.git
     targetRevision: HEAD
-    path: Kustomize_Overlays/kustomize_manual_example/overlays/dev
+    path: Kustomize_Overlays/kustomize_manual_example/overlays/prod
   destination: 
     server: https://kubernetes.default.svc
-
+    namespace: kustomiz-prod-env 
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
