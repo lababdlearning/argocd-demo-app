@@ -29,7 +29,7 @@ spec:
         mode: active-backup
         options:
           miimon: '140'
-        slaves:
+        ports:
           - ens224
           - ens256
     routes:
