@@ -18,6 +18,20 @@ spec:
         - ip: 192.168.100.212
           prefix-length: 24
         enabled: true
+    - name: bond10
+      description: Static routing on bond10.
+      type: bond
+      state: up
+      ipv4:
+        dhcp: false
+        enabled: true
+      link-aggregation:
+        mode: active-backup
+        options:
+          miimon: '140'
+        slaves:
+          - ens224
+          - ens256
     routes:
       config:
       - destination: 10.50.52.0/24
